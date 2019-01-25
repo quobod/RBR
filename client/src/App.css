@@ -1,0 +1,123 @@
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background-color: rgb(0,0,0);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  border: solid 0.3rem #000;
+  text-align: center;
+  font-weight: bolder;
+  line-height: 1.5;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: rgba(255, 255, 250, 0.8);
+}
+
+.nav-bar a:hover,
+.auth-button:hover {
+  color: rgb(255, 255, 0);
+  cursor: pointer;
+}
+
+.auth-button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 250, 0.8);
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.form-wrapper {
+  display: flex;
+}
+
+.form-wrapper .register-form,
+.form-wrapper .signin-form,
+.add-todo-form {
+  background: rgb(1, 1, 39);
+  color: #fff;
+  display: grid;
+  width: 90vw;
+}
+
+.register-form input,
+.signin-form input,
+.add-todo-form input {
+  background: transparent;
+  color: #fff;
+  border: solid thin #dde;
+  border-radius: 5px;
+  width: 80vw;
+  height: 26px;
+  margin: 0 0 0.9rem 0;
+  padding: 0 0 0 0.2rem;
+}
+
+.register-form input[type="submit"],
+.signin-form input[type="submit"],
+.add-todo-form input[type="submit"] {
+  background: transparent;
+  color: #fff;
+  max-width: 12vw;
+  height: 20px;
+  font-weight: bolder;
+  font-size: 1.1rem;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+.register-form input[type="submit"]:hover,
+.signin-form input[type="submit"]:hover
+.add-todo-form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.list-item,
+.list-item * {
+  margin: 0;
+  padding: 0;
+}
+
+.list-item .todo-item {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.list-item .todo-item .todo-item-controls {
+  background: rgb(187, 219, 226);
+  color: rgb(3, 0, 0);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item .todo-item .todo-item-controls .todo-delete {
+  margin: 0 0.5rem 0 0;
+  padding: 0.1rem;
+  border: none;
+  color:  rgb(121, 2, 15);
+  box-sizing: border-box;
+  line-height: 0.9;
+}
+
+.list-item .todo-item .todo-item-controls .todo-completed {
+  box-sizing: border-box;
+  margin: 0 0 0 0.2rem;
+  padding: 0.1rem;
+  display: flex;
+  align-items: stretch;
+  line-height: 0.9;
+}
+
+.list-item .todo-item .todo-item-controls .todo-completed input[type="checkbox"]:hover,
+.list-item .todo-item .todo-item-controls .todo-delete:hover {
+  cursor: pointer;
+}

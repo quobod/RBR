@@ -100,8 +100,8 @@
 }
 
 .list-item .todo-item .todo-item-controls .todo-delete {
-  margin: 0 0.5rem 0 0;
-  padding: 0.1rem;
+  margin: 0;
+  padding: 0;
   border: none;
   color:  rgb(121, 2, 15);
   box-sizing: border-box;
@@ -118,6 +118,17 @@
 }
 
 .list-item .todo-item .todo-item-controls .todo-completed input[type="checkbox"]:hover,
-.list-item .todo-item .todo-item-controls .todo-delete:hover {
+.list-item .todo-item .todo-item-controls .todo-delete-button:hover {
   cursor: pointer;
+}
+
+.list-item .todo-item .todo-item-controls .todo-delete-button {
+  margin: 0 0.5rem 0 0;
+  padding: 0.1rem;
+  background: transparent;
+  border: none;
+}
+
+.list-item .todo-item .todo-item-controls .todo-delete-button:hover {
+  border: solid 1pt #fff;
 }

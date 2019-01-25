@@ -34,4 +34,16 @@ module.exports = server => {
 			res.send({ status: 'failure', reason: err.message });
 		}
 	});
+
+	server.get('/api/todos/remove/:id', async (req, res) => {
+		const todoId = req.params.id;
+		try {
+			await Todos.findByIdAndDelete(todoId,(err, todo) => {
+				res.status(201);
+				res.send({ status: 'success', payload: JSON.stringify(todo) });
+			});
+		} catch(err) {
+			res.send({ status: 'failure', reason: err.message });
+		}
+	});
 }

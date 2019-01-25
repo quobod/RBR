@@ -60,6 +60,15 @@ export class Provider extends Component {
             })
             .catch(err => console.log(err));
     }
+    
+    removeTodo = (id) => {
+        Axios.get(`/api/todos/remove/${id}`)
+            .then(response => {
+                console.log(response.data);
+                this.initTodos();
+            })
+            .catch(err => console.log(`\n\t\t${err.message}\n`));
+    }
 
     render() {
         return (
@@ -69,7 +78,8 @@ export class Provider extends Component {
                     logout: this.logout,
                     login: this.login,
                     todos: this.state.todos,
-                    addTodo: this.addTodo
+                    addTodo: this.addTodo,
+                    removeTodo: this.removeTodo
                 }
             }>
                 { this.props.children }

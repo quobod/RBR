@@ -18,15 +18,16 @@ class TodoItem extends React.Component {
         return (
             <Consumer>
                 {value => {
-                    const { removeTodo, removeTodoFailure } = value;
+                    const { removeTodo, removeTodoFailure, completeTodo } = value;
                     return(<li className="list-item">
                         <div className="todo-item">
                             <div className="todo-item-controls">
                                 <span className="todo-completed">
                                     <input onChange={() => {
+                                        completeTodo(_id);
                                         this.setState((state, props) => ({
                                             completed: state.completed === false? true:false
-                                        }))
+                                        }));
                                     }} type="checkbox" />&nbsp;
                                     <b className="bold">Completed?</b>
                                 </span>

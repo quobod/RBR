@@ -160,6 +160,25 @@ export class Provider extends Component {
             });
     }
 
+    completeTodo = (id) => {
+        Axios.get(`/api/todos/completed/${id}`)
+            .then(response => {
+                const { status } = response.data;
+                switch(status.toLowerCase()) {
+                    case 'success':
+                        console.log(status);
+                    break;
+
+                    default:
+                        console.log(status);
+                    break;
+                }
+            })
+            .catch(error => {
+                console.log(error.message);
+            });
+    }
+
     render() {
         return (
             <Context.Provider value={
@@ -178,7 +197,8 @@ export class Provider extends Component {
                     removeTodoErrorMessage: this.state.removeTodoErrorMessage,
                     loginErrorMessage: this.state.loginErrorMessage,
                     registrationErrorMessage: this.state.registrationErrorMessage,
-                    todos: this.state.todos
+                    todos: this.state.todos,
+                    completeTodo: this.completeTodo
                 }
             }>
                 { this.props.children }

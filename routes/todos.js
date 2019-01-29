@@ -46,4 +46,24 @@ module.exports = server => {
 			res.send({ status: 'failure', reason: err.message });
 		}
 	});
+
+	server.get('/api/todos/completed/:id', async (req, res) => {
+		const todoId = req.params.id;
+		log(`Todo: ${todoId}`);
+		try {
+			await Todos.findById(todoId,(err, todo) => {
+				log(`\n\n\t\tFound todo: ${todoId}\n\n`);
+				todo.completed = todo.completed === false? true: false;
+				todo.save((err, todo) => {
+					if (err) {
+						res.send({ status: 'failure', reason: 'Unable to modify Todo complete status' });
+					}
+					res.status(201);
+					res.send({ status: 'success', payload: JSON.stringify(todo) });
+				});
+			});
+		} catch(err) {
+			res.send({ status: 'failure', reason: err.message });
+		}
+	});
 }

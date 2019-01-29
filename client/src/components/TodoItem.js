@@ -8,10 +8,10 @@ class TodoItem extends React.Component {
         return (
             <Consumer>
                 {value => {
-                    const { removeTodo } = value;
+                    const { removeTodo, removeTodoFailure } = value;
                     return(<li className="list-item">
                         <div className="todo-item">
-                            <h2>{title}</h2>
+                            {removeTodoFailure? <h1>Unable to delete {title}</h1> : <h3>{title}</h3>}
                             <div className="todo-item-controls">
                                 <span className="todo-completed">
                                     <input type="checkbox" />&nbsp;

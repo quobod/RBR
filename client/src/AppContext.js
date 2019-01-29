@@ -8,7 +8,15 @@ export class Provider extends Component {
         this.state = {
             todos: [],
             user: JSON.parse(localStorage.getItem("user")) || {},
-            token: JSON.parse(localStorage.getItem("token")) || ""
+            token: JSON.parse(localStorage.getItem("token")) || "",
+            loginSuccess: true,
+            registrationSuccess: true,
+            addTodoSuccess: true,
+            removeTodoSuccess: true,
+            addTodoErrorMessage: '',
+            removeTodoErrorMessage: '',
+            loginErrorMessage: '',
+            registrationErrorMessage: ''
         };
     }
 
@@ -21,19 +29,41 @@ export class Provider extends Component {
     login = (data) => {        
         Axios.post('/auth/login', data)
             .then(response => {
-                console.log(response);
-                const { token, user } = JSON.parse(response.data.payload);
-                localStorage.setItem("user", JSON.stringify(user));
-                localStorage.setItem("token", JSON.stringify(token));
-                this.setState({
-                    user,
-                    token
-                });
-                this.initTodos();
-                console.log('Logged In');
+                switch(response.data.status.toLowerCase()) {
+                    case 'success':
+                        // console.log(response);
+                        const { token, user } = JSON.parse(response.data.payload);
+                        localStorage.setItem("user", JSON.stringify(user));
+                        localStorage.setItem("token", JSON.stringify(token));
+                        this.setState({
+                            user,
+                            token,
+                            loginSuccess: true,
+                            loginErrorMessage: ''
+                        });
+                        this.initTodos();
+                        console.log('Logged In');
+                    break;
+
+                    default:
+                        this.setState({
+                            user: {},
+                            token: "",
+                            loginSuccess: false,
+                            loginErrorMessage: 'Authentication Failed'
+                        });
+                    break;
+                        
+                }
             })
             .catch(error => {
                 console.log(error.message);
+                this.setState({
+                    user: {},
+                    token: "",
+                    loginSuccess: false,
+                    loginErrorMessage: 'Authentication Failure'
+                })
             });
     }
 
@@ -52,13 +82,67 @@ export class Provider extends Component {
                 console.log(error);
             });
     }  
+
+    register = (data) => {
+       Axios.post('/auth/register', data)
+        .then(response => {
+            switch(response.data.status.toLowerCase()) {
+                case 'success':
+                    const { token, user } = JSON.parse(response.data.payload);
+                    localStorage.setItem("user", JSON.stringify(user));
+                    localStorage.setItem("token", JSON.stringify(token));
+                    this.setState({
+                        user,
+                        token,
+                        registrationErrorMessage: '',
+                        registrationSuccess: true
+                    })
+                break;
+
+                default:
+                    this.setState({
+                        registrationSuccess: false,
+                        registrationErrorMessage: response.data.reason
+                    });
+                    console.log(`\n\t\tReceived Error: ${response.data.reason}\n\n`);
+                    break;
+            }
+        })
+        .catch(error => {
+            this.setState({
+                registrationSuccess: false,
+                registrationErrorMessage: error.message
+            });
+            console.log(`\n\t\tCaught Error: ${error.message}\n\n`);
+        });
+    }
     
     addTodo = (data) => {
         Axios.post('/api/todos/add', data)
             .then(response => {
-                this.initTodos();
+                const status = response.data.status.toLowerCase();
+                switch(status) {
+                    case 'success':
+                        this.initTodos();           
+                        this.setState({
+                            addTodoSuccess: true
+                        });   
+                    break;
+
+                    default:            
+                        this.setState({
+                            addTodoSuccess: false
+                        });
+                    break;
+                }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);                
+                this.setState({
+                    addTodoSuccess: false,
+                    addTodoErrorMessage: err.message
+                })
+            });
     }
     
     removeTodo = (id) => {
@@ -67,19 +151,34 @@ export class Provider extends Component {
                 console.log(response.data);
                 this.initTodos();
             })
-            .catch(err => console.log(`\n\t\t${err.message}\n`));
+            .catch(err => {
+                console.log(`\n\t\t${err.message}\n`);
+                this.setState({
+                    addTodoSuccess: false,
+                    removeTodoErrorMessage: err.message
+                })
+            });
     }
 
     render() {
         return (
             <Context.Provider value={
                 {
-                    token: this.state.token,
-                    logout: this.logout,
                     login: this.login,
-                    todos: this.state.todos,
+                    logout: this.logout,
+                    register: this.register,
                     addTodo: this.addTodo,
-                    removeTodo: this.removeTodo
+                    removeTodo: this.removeTodo,
+                    token: this.state.token,                    
+                    loginSuccess: this.state.loginSuccess,
+                    registrationSuccess: this.state.registrationSuccess,
+                    addTodoSuccess: this.state.addTodoSuccess,
+                    removeTodoSuccess: this.state.removeTodoSuccess,
+                    addTodoErrorMessage: this.state.addTodoErrorMessage,
+                    removeTodoErrorMessage: this.state.removeTodoErrorMessage,
+                    loginErrorMessage: this.state.loginErrorMessage,
+                    registrationErrorMessage: this.state.registrationErrorMessage,
+                    todos: this.state.todos
                 }
             }>
                 { this.props.children }

@@ -19,7 +19,6 @@ const UserSchema = new Schema({
         type: String,
 		unique: true,
 		index: true,
-		trim: true,
 		required: true
     },
     firstName: {
@@ -35,11 +34,7 @@ const UserSchema = new Schema({
 		type: String
 	},
 	userName: {
-		type: String,
-		unique: true,
-		index: true,
-		trim: true,
-		required: true
+		type: String
 	},
 	displayName: {
 		type: String

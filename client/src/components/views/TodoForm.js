@@ -30,7 +30,7 @@ class TodoForm extends React.Component {
             <div className="content">
                 <Consumer>
                     {value => {
-                        const { addTodo } = value;
+                        const { addTodo, addTodoSuccess } = value;
                         
                         return (
                             <div className="form-wrapper">
@@ -38,11 +38,11 @@ class TodoForm extends React.Component {
                                     e.preventDefault();
                                     const { title, user } = e.target;
                                     const data = { title: title.value, user: user.value };
-                                    // console.log(`Data: ${JSON.stringify(data)}`);
                                     addTodo(data);
                                     this.clearInputs();
                                     this.setState({
-                                        submitted: true
+                                        submitted: addTodoSuccess,
+                                        error: (addTodoSuccess?false:true)
                                     });
                                 }}>
                                     <div className="input-group">
@@ -54,6 +54,10 @@ class TodoForm extends React.Component {
                                     <div className="input-group">
                                         <input type="submit" value="Submit" />
                                     </div>
+                                    {
+                                        this.state.error &&
+                                        <p className="error">New Todo Failure</p>
+                                    }
                                     {
                                         this.state.submitted &&
                                         <Redirect to="/todos" />

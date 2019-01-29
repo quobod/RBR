@@ -56,7 +56,7 @@ module.exports = server => {
 					} else {
 						res.send({ status: 'failure', reason: 'This username is taken' });
 					}
-				} else if (pwd !== pwd2) {
+				} else if (pwd.trim() !== pwd2.trim()) {
 					res.send({ status: 'failure', reason: 'Passwords don\'t match' });
 				} else {
 					const newUser = new User({
@@ -74,12 +74,12 @@ module.exports = server => {
 							
 							// Save User
 							try {
-								await newUser.save((err, user) => {
+								await newUser.save((err, _user) => {
 									if(err) {
 										res.send({ status: 'failure', reason: `Could not save user\n${err.message}` });
 									}
-									const token = jwt.sign(user.withoutPassword(), JWT_SECRET);
-									res.send({ status: 'success', payload: JSON.stringify({ "token": token, "user": user.withoutPassword() }) });
+									const token = jwt.sign(_user.withoutPassword(), JWT_SECRET);
+									res.send({ status: 'success', payload: JSON.stringify({ "token": token, "user": _user.withoutPassword() }) });
 								});
 							} catch(err) {
 								res.send({ status: 'failure', reason: `Encryption Failure\n${err}` });
@@ -92,11 +92,6 @@ module.exports = server => {
 			res.send({ status: 'failure', reason: `Registration Failure\n${err}` });
 		}		
 	});
-
-
-
-
-
 
 	// Google Authentication
 	server.get('/google', passport.authenticate('google-login', { scope: [
@@ -151,6 +146,5 @@ module.exports = server => {
 	server.get('/auth/logout', (req, res) => {
 		req.logout();
 		res.send({ status: 'success', payload: `successfully logged out` });
-	});
-	
+	});	
 }

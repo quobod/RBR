@@ -11,11 +11,9 @@ class Register extends React.Component {
             uname: '',
             email: '',
             pwd: '',
-            pwd2: '',
-            errorMessage: ''
+            pwd2: ''
         };
     }
-
 
     handleChange = (e) => {
         const { name, value } = e.target
@@ -31,8 +29,7 @@ class Register extends React.Component {
             uname: '',
             email: '',
             pwd: '',
-            pwd2: '',
-            errorMessage: ''
+            pwd2: ''
         })
     }
     
@@ -41,7 +38,7 @@ class Register extends React.Component {
             <div className="content">
                 <Consumer>
                     {value => {
-                        const { register, redirect } = value;
+                        const { register, registrationSuccess, registrationErrorMessage, token } = value;
                         return (
                             <div className="form-wrapper">
                                 <form className="register-form" onSubmit={(e)=>{
@@ -57,7 +54,9 @@ class Register extends React.Component {
                                     };
 
                                     register(data);
-                                    this.clearInputs();
+                                    if (registrationSuccess) {
+                                        this.clearInputs();
+                                    }
                                 }}>
                                     <div className="input-group">
                                         <input onChange={this.handleChange} type="text" name="fname" value={this.state.fname} placeholder="Enter your first name" required/>
@@ -80,18 +79,17 @@ class Register extends React.Component {
                                     <div className="input-group">
                                         <input type="submit" value="Submit"/>
                                     </div>
+                                    {
+                                        token && 
+                                        <Redirect to="/todos" />
+                                    }
+                                   
+                                    {
+                                        registrationErrorMessage &&
+                                        <p className="error">{registrationErrorMessage}</p>
+                                    }
+
                                 </form>
-
-                                {
-                                    redirect &&
-                                    <Redirect to="/todos" />
-                                }
-
-                                {
-                                    this.state.errorMessage &&
-                                    <p style={{color: "red"}}>{this.state.errorMessage}</p>
-                                    
-                                }
                             </div>
                         )
                     }}

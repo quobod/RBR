@@ -1,6 +1,5 @@
 import React from 'react';
 import { Consumer } from '../../AppContext';
-import Spinner from '../Spinner';
 import TodoItem from '../TodoItem';
 
 class Todos extends React.Component {
@@ -10,7 +9,7 @@ class Todos extends React.Component {
                 {value => {
                     const { todos } = value;
                     if (undefined === todos || todos.length < 1) {
-                        return <Spinner />
+                        return (<div className="content"><h2>No Todos</h2></div>)
                     } else {
                         return (
                             <div className="content">

@@ -30,17 +30,15 @@ class Signin extends React.Component {
             <div className="content">
             <Consumer>
                 {value => {
-                    const { login, token } = value;
+                    const { login, token, loginErrorMessage } = value;
                     
                     return (
                         <div className="form-wrapper">
                             <form className="signin-form" onSubmit={(e) => {
                                 e.preventDefault();
                                 const { usernameOrEmail, password } = e.target;
-                                const data = { usernameOrEmail: usernameOrEmail.value, password: password.value };
-                                // console.log(`Data: ${JSON.stringify(data)}`);
+                                const data = { usernameOrEmail: usernameOrEmail.value, password: password.value };                                
                                 login(data);
-
                                 this.clearInputs();
                             }}>
                                 <div className="input-group">
@@ -55,6 +53,11 @@ class Signin extends React.Component {
                                 {
                                     token &&
                                     <Redirect to="/todos" />
+                                }
+
+                                {
+                                    loginErrorMessage &&
+                                    <p>{loginErrorMessage}</p>
                                 }
                             </form>
                         </div>

@@ -7,8 +7,9 @@ class Header extends React.Component {
     loggedIn = (logout) => {
         return (
             <ul>
-                <Link to="/todos" className="link">Todos&nbsp;</Link> 
-                <Link to="/addtodo" className="link">Add&nbsp;</Link> 
+                <Link to="/todos" className="link">Todos&nbsp;</Link>
+                <Link to="/journals" className="link">Journals&nbsp;</Link>  
+                <Link to="/dashboard" className="link">Dashboard&nbsp;</Link> 
                 <button onClick={logout} className="auth-button">
                     Signout
                 </button>

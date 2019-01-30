@@ -4,10 +4,12 @@ import { Provider } from './AppContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
 import About from './components/views/About';
+import Dashboard from './components/views/Dashboard';
 import Home from './components/views/Home';
 import Register from './components/views/Register';
 import Signin from './components/views/Signin';
 import Todos from './components/views/Todos';
+import Journals from './components/views/Journals';
 import TodoForm from './components/views/TodoForm';
 import Spinner from './components/Spinner';
 import './App.css';
@@ -27,7 +29,9 @@ class App extends Component {
                   <Route path="/register" component={Register} />
                   <Route path="/signin" component={Signin} />
                   <ProtectedRoute exact path="/todos" component={Todos} />
+                  <ProtectedRoute exact path="/journals" component={Journals} />
                   <ProtectedRoute path="/addtodo" component={TodoForm} />
+                  <ProtectedRoute path="/dashboard" component={Dashboard} />
                 </Switch>
               </div>
             </React.Fragment>

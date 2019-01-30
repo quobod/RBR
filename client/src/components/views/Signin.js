@@ -52,7 +52,7 @@ class Signin extends React.Component {
                                 </div>
                                 {
                                     token &&
-                                    <Redirect to="/todos" />
+                                    <Redirect to="/dashboard" />
                                 }
 
                                 {

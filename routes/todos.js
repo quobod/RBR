@@ -3,14 +3,14 @@ const Todos = require('../models/Todos');
 const { log, table } = require('../custom_modules/log');
 
 module.exports = server => {
-	server.get('/api', async (req, res) => {
+	server.get('/api/todos', async (req, res) => {
 		try {
 			// console.log(`\n\n\t\tUser: ${JSON.stringify(req.user)}\n\n`);
 			const todos = await Todos.find({ user: req.user._id });
 			if (todos) {
 				res.send(todos);
 			} else {
-				res.send(errs.ResourceNotFoundError(err.message));
+				res.send(errs.ResourceNotFoundError('You have no todos'));
 			}
 		} catch (err) {
 			res.send(errs.ResourceNotFoundError(err.message));

@@ -63,5 +63,6 @@ db.on('error', (err) => log(error(err)));
 db.once('open', () => {
 	require('./routes/todos')(server);
 	require('./routes/users')(server);
+	require('./routes/journals')(server);
 	log(fyi(`${server.name} started @ ${server.url}`));
 });

@@ -5,7 +5,7 @@ class TodoItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            completed: false
+            completed: props.todo.completed
         }
     }
 
@@ -28,7 +28,7 @@ class TodoItem extends React.Component {
                                         this.setState((state, props) => ({
                                             completed: state.completed === false? true:false
                                         }));
-                                    }} type="checkbox" />&nbsp;
+                                    }} type="checkbox" checked={this.state.completed} />&nbsp;
                                     <b className="bold">Completed?</b>
                                 </span>
                             {removeTodoFailure? <h1>Unable to delete {title}</h1> : <p style={this.completed()}><b>{title}</b></p>}

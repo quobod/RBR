@@ -7,6 +7,7 @@ export class Provider extends Component {
         super(props);
         this.state = {
             todos: [],
+            journals: [],
             user: JSON.parse(localStorage.getItem("user")) || {},
             token: JSON.parse(localStorage.getItem("token")) || "",
             loginSuccess: true,
@@ -21,9 +22,15 @@ export class Provider extends Component {
     }
 
     initTodos = () => {
-        Axios.get('/api')
+        Axios.get('/api/todos')
         .then(response => this.setState({ todos: response.data }))
         .catch(err => console.log(`Todos Error: ${err.message}`));
+    }
+
+    initJournals = () => {
+        Axios.get('/api/journals')
+        .then(response => this.setState({ journals: response.data }))
+        .catch(err => console.log(`Journals Error: ${err.message}`));
     }
 
     login = (data) => {        
@@ -42,6 +49,7 @@ export class Provider extends Component {
                             loginErrorMessage: ''
                         });
                         this.initTodos();
+                        this.initJournals();
                         console.log('Logged In');
                     break;
 
@@ -179,6 +187,18 @@ export class Provider extends Component {
             });
     }
 
+    addJournal = (data) => {
+        console.log(`\n\n\t\t\tNew Journal Data: ${data}\n\n`);
+    }
+
+    removeJournal = (id) => {
+        console.log(`\n\n\t\t\tRemoving Journal ID: ${id}\n\n`);
+    }
+
+    canCommentJournal = (id) => {
+        console.log(`\n\n\t\t\tCommenting Journal ID: ${id}\n\n`);
+    }
+
     render() {
         return (
             <Context.Provider value={
@@ -198,6 +218,10 @@ export class Provider extends Component {
                     loginErrorMessage: this.state.loginErrorMessage,
                     registrationErrorMessage: this.state.registrationErrorMessage,
                     todos: this.state.todos,
+                    journals: this.state.journals,
+                    addJournal: this.addJournal,
+                    removeJournal: this.removeJournal,
+                    canCommentJournal: this.canCommentJournal,
                     completeTodo: this.completeTodo
                 }
             }>

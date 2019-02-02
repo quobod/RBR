@@ -17,7 +17,8 @@ export class Provider extends Component {
             addTodoErrorMessage: '',
             removeTodoErrorMessage: '',
             loginErrorMessage: '',
-            registrationErrorMessage: ''
+            registrationErrorMessage: '',
+            addJournalSuccess: true
         };
     }
 
@@ -188,7 +189,27 @@ export class Provider extends Component {
     }
 
     addJournal = (data) => {
-        console.log(`\n\n\t\t\tNew Journal Data: ${data}\n\n`);
+        Axios.post('/api/journals/add', data)
+            .then(response => {
+                console.log(response.data);
+                switch(response.data.status.toLowerCase()) {
+                    case 'success':
+                        this.setState({
+                            addJournalSuccess: true
+                        })
+                        this.initJournals();
+                    break;
+
+                    default:
+                        this.setState({
+                            addJournalSuccess: false
+                        })
+                    break;
+                }
+            })
+            .catch(error => {
+                console.log(error.message);
+            });
     }
 
     removeJournal = (id) => {
@@ -220,6 +241,7 @@ export class Provider extends Component {
                     todos: this.state.todos,
                     journals: this.state.journals,
                     addJournal: this.addJournal,
+                    addJournalSuccess: this.state.addJournalSuccess,
                     removeJournal: this.removeJournal,
                     canCommentJournal: this.canCommentJournal,
                     completeTodo: this.completeTodo

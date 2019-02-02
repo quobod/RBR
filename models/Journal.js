@@ -23,6 +23,11 @@ const JournalSchema = new Schema({
 		required: true,
 		default: false
 	},
+	showComments: {
+		type: Boolean,
+		required: true,
+		default: false
+	},
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -31,13 +36,11 @@ const JournalSchema = new Schema({
     comments: {
         user: {
             type: Schema.Types.ObjectId,
-            ref: "User",
-            required: true
+            ref: "User"
         },
         comment: {
-            type: String,
-            required: true,
-            trim: true
+            type: Schema.Types.ObjectId,
+            ref: "Comment"
 		},
 		created: {
 			type: Date,

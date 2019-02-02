@@ -11,6 +11,7 @@ import Signin from './components/views/Signin';
 import Todos from './components/views/Todos';
 import Journals from './components/views/Journals';
 import TodoForm from './components/views/TodoForm';
+import JournalForm from './components/views/JournalForm';
 import Spinner from './components/Spinner';
 import './App.css';
 
@@ -31,6 +32,7 @@ class App extends Component {
                   <ProtectedRoute exact path="/todos" component={Todos} />
                   <ProtectedRoute exact path="/journals" component={Journals} />
                   <ProtectedRoute path="/addtodo" component={TodoForm} />
+                  <ProtectedRoute path="/addjournal" component={JournalForm} />
                   <ProtectedRoute path="/dashboard" component={Dashboard} />
                 </Switch>
               </div>

@@ -37,7 +37,8 @@
 
 .form-wrapper .register-form,
 .form-wrapper .signin-form,
-.add-todo-form {
+.add-todo-form,
+.add-journal-form {
   background: rgb(1, 1, 39);
   color: #fff;
   display: grid;
@@ -46,7 +47,8 @@
 
 .register-form input,
 .signin-form input,
-.add-todo-form input {
+.add-todo-form input,
+.add-journal-form input {
   background: transparent;
   color: #fff;
   border: solid thin #dde;
@@ -59,7 +61,8 @@
 
 .register-form input[type="submit"],
 .signin-form input[type="submit"],
-.add-todo-form input[type="submit"] {
+.add-todo-form input[type="submit"],
+.add-journal-form input[type="submit"] {
   background: transparent;
   color: #fff;
   max-width: 12vw;
@@ -71,8 +74,41 @@
 
 .register-form input[type="submit"]:hover,
 .signin-form input[type="submit"]:hover
-.add-todo-form input[type="submit"]:hover {
+.add-todo-form input[type="submit"]:hover,
+.add-journal-form input[type="submit"]:hover {
   cursor: pointer;
+}
+
+.add-journal-form {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-row-gap: 0.1rem;
+}
+
+.add-journal-form input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+  max-width: 5vw;
+  width: 2vw;
+}
+
+.add-journal-form .input-group {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  width: 80vw;
+  height: 10vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .list-item,
@@ -131,4 +167,8 @@
 
 .list-item .todo-item .todo-item-controls .todo-delete-button:hover {
   border: solid 1pt #fff;
+}
+
+.accordion {
+  display: grid;
 }

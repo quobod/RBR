@@ -5,13 +5,12 @@ import { Consumer } from '../AppContext';
 class JournalItem extends React.Component {
 
     componentDidMount() {
-        const script = document.createElement('script');
-        script.src = '/js/accordion.js';
-        document.body.appendChild(script);
+        this.loadAccordionScript();
     }
 
     cap = (str) => {
-        if (Array.isArray(str) ||
+        if ((Array.isArray(str), null !== str && 
+            undefined !== str) ||
             (null !== str && 
                 undefined !== str && 
                 (str instanceof Object))) {
@@ -32,6 +31,12 @@ class JournalItem extends React.Component {
     formatDate = (date, format) => moment(date).format(format);
     
     date = (arg) => this.formatDate(arg, 'MMMM Do YYYY');
+
+    loadAccordionScript = () => {
+        const script = document.createElement('script');
+        script.src = '/js/accordion.js';
+        document.body.appendChild(script);
+    }
 
     render() {
         const { title, body, user, createdAt, updatedAt } = this.props.journal;

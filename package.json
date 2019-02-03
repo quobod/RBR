@@ -13,7 +13,7 @@
     "client-sessions": "^0.8.0",
     "dotenv": "^6.2.0",
     "jsonwebtoken": "^8.4.0",
-    "moment": "^2.23.0",
+    "moment": "^2.24.0",
     "mongoose": "^5.4.3",
     "mongoose-timestamp": "^0.6.0",
     "passport": "^0.4.0",

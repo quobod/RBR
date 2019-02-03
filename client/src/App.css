@@ -169,6 +169,31 @@
   border: solid 1pt #fff;
 }
 
-.accordion {
+.journal-list-parent .journal-list {
   display: grid;
+}
+
+.panel {
+  display: grid;
+}
+
+.panel .body {
+  margin: 0;
+  padding: 0;
+}
+
+.panel .detail {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.paenl .detail * {
+  margin: 0;
+  padding: 0;
+}
+
+.panel .detail .author {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: start;
 }

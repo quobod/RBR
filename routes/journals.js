@@ -8,8 +8,10 @@ module.exports = server => {
 			try {
 				const journals = await Journal
 					.find({ user: req.user._id })
-					.populate('Comment');
+					.populate('user')
+					.sort({date: 'desc'});
 				if (journals) {
+					log(`${JSON.stringify(journals)}`);
 					res.send(journals);
 				} else {
 					res.send(errs.ResourceNotFoundError('You have no journals'));

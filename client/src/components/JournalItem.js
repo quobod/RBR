@@ -26,13 +26,9 @@ class JournalItem extends React.Component {
         return `${str.substr(0,1).toUpperCase()}${str.substr(1)}`;
     }
 
-    formatDate = (date, format) => {
-		return moment(date).format(format);
-    }
+    formatDate = (date, format) => moment(date).format(format);
     
-    date = (arg) => {
-        return this.formatDate(arg, 'MMMM Do YYYY');
-    }
+    date = (arg) => this.formatDate(arg, 'MMMM Do YYYY');
 
     render() {
         const { title, body, user, createdAt } = this.props.journal;

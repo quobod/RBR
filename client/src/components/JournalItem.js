@@ -11,7 +11,10 @@ class JournalItem extends React.Component {
     }
 
     cap = (str) => {
-        if (Array.isArray(str)) {
+        if (Array.isArray(str) ||
+            (null !== str && 
+                undefined !== str && 
+                (str instanceof Object))) {
             let newStr = '';
 
             for (let s in str) {
@@ -31,7 +34,7 @@ class JournalItem extends React.Component {
     date = (arg) => this.formatDate(arg, 'MMMM Do YYYY');
 
     render() {
-        const { title, body, user, createdAt } = this.props.journal;
+        const { title, body, user, createdAt, updatedAt } = this.props.journal;
         return (
                 <Consumer>
                     {value => {
@@ -44,6 +47,7 @@ class JournalItem extends React.Component {
                                     <div className="author">
                                         <label><b>Author:</b> {this.cap([user.firstName.trim(), user.lastName.trim()])}</label>
                                         <label><b>Created:</b> {this.date(createdAt)}</label>
+                                        <label><b>Last Update:</b> {this.date(updatedAt)}</label>
                                     </div>
                                 </div>
                             </div>

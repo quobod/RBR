@@ -17,6 +17,9 @@ class JournalItem extends React.Component {
 
     cap = (str) => {
         if (Array.isArray(str) ||
+<<<<<<< HEAD
+>>>>>>> parent of 08b195b... Minor update - stream-lined some code
+=======
 >>>>>>> parent of 08b195b... Minor update - stream-lined some code
             (null !== str && 
                 undefined !== str && 
@@ -41,6 +44,9 @@ class JournalItem extends React.Component {
     displayDate = (arg) => this.formatDate(arg, 'MMMM Do YYYY');   
 =======
     date = (arg) => this.formatDate(arg, 'MMMM Do YYYY');
+<<<<<<< HEAD
+>>>>>>> parent of 08b195b... Minor update - stream-lined some code
+=======
 >>>>>>> parent of 08b195b... Minor update - stream-lined some code
 
     render() {

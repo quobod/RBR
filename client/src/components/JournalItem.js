@@ -3,57 +3,10 @@ import moment from 'moment';
 import { Consumer } from '../AppContext';
 
 class JournalItem extends React.Component {
-<<<<<<< HEAD
-    cap = (str) => {
-      /*   if ((Array.isArray(str), null !== str && 
-            undefined !== str) ||
-=======
-
-    componentDidMount() {
-        const script = document.createElement('script');
-        script.src = '/js/accordion.js';
-        document.body.appendChild(script);
-    }
-
-    cap = (str) => {
-        if (Array.isArray(str) ||
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 08b195b... Minor update - stream-lined some code
-=======
->>>>>>> parent of 08b195b... Minor update - stream-lined some code
-=======
->>>>>>> parent of 08b195b... Minor update - stream-lined some code
-            (null !== str && 
-                undefined !== str && 
-                (str instanceof Object))) {
-            let newStr = '';
-
-            for (let s in str) {
-                let word = str[s];
-                if (word){
-                    newStr += `${word.substr(0,1).toUpperCase()}${word.substr(1)} `;
-                }
-            }
-
-            return newStr.trim();
-        } */
-        return `${str.substr(0,1).toUpperCase()}${str.substr(1)}`;
-    }
+    
+    cap = (str) => `${str.substr(0,1).toUpperCase()}${str.substr(1)}`;
 
     formatDate = (date, format) => moment(date).format(format);
-    
-<<<<<<< HEAD
-    displayDate = (arg) => this.formatDate(arg, 'MMMM Do YYYY');   
-=======
-    date = (arg) => this.formatDate(arg, 'MMMM Do YYYY');
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 08b195b... Minor update - stream-lined some code
-=======
->>>>>>> parent of 08b195b... Minor update - stream-lined some code
-=======
->>>>>>> parent of 08b195b... Minor update - stream-lined some code
 
     render() {
         const { title, body, user, createdAt, updatedAt } = this.props.journal;

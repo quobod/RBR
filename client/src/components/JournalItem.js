@@ -3,9 +3,21 @@ import moment from 'moment';
 import { Consumer } from '../AppContext';
 
 class JournalItem extends React.Component {
+<<<<<<< HEAD
     cap = (str) => {
       /*   if ((Array.isArray(str), null !== str && 
             undefined !== str) ||
+=======
+
+    componentDidMount() {
+        const script = document.createElement('script');
+        script.src = '/js/accordion.js';
+        document.body.appendChild(script);
+    }
+
+    cap = (str) => {
+        if (Array.isArray(str) ||
+>>>>>>> parent of 08b195b... Minor update - stream-lined some code
             (null !== str && 
                 undefined !== str && 
                 (str instanceof Object))) {
@@ -25,7 +37,11 @@ class JournalItem extends React.Component {
 
     formatDate = (date, format) => moment(date).format(format);
     
+<<<<<<< HEAD
     displayDate = (arg) => this.formatDate(arg, 'MMMM Do YYYY');   
+=======
+    date = (arg) => this.formatDate(arg, 'MMMM Do YYYY');
+>>>>>>> parent of 08b195b... Minor update - stream-lined some code
 
     render() {
         const { title, body, user, createdAt, updatedAt } = this.props.journal;

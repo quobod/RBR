@@ -3,13 +3,8 @@ import moment from 'moment';
 import { Consumer } from '../AppContext';
 
 class JournalItem extends React.Component {
-
-    componentDidMount() {
-        this.loadAccordionScript();
-    }
-
     cap = (str) => {
-        if ((Array.isArray(str), null !== str && 
+      /*   if ((Array.isArray(str), null !== str && 
             undefined !== str) ||
             (null !== str && 
                 undefined !== str && 
@@ -24,19 +19,13 @@ class JournalItem extends React.Component {
             }
 
             return newStr.trim();
-        }
+        } */
         return `${str.substr(0,1).toUpperCase()}${str.substr(1)}`;
     }
 
     formatDate = (date, format) => moment(date).format(format);
     
-    date = (arg) => this.formatDate(arg, 'MMMM Do YYYY');
-
-    loadAccordionScript = () => {
-        const script = document.createElement('script');
-        script.src = '/js/accordion.js';
-        document.body.appendChild(script);
-    }
+    displayDate = (arg) => this.formatDate(arg, 'MMMM Do YYYY');   
 
     render() {
         const { title, body, user, createdAt, updatedAt } = this.props.journal;
@@ -45,14 +34,14 @@ class JournalItem extends React.Component {
                     {value => {
                         // const { removeJournal, canCommentJournal } = value;
                         return (<li className="list-item">
-                            <button className="accordion"><b>{title}</b></button>
+                            <button className="accordion"><b>{this.cap(title)}</b></button>
                             <div className="panel">
                                 <p className="body">{body}</p>
                                 <div className="detail">
                                     <div className="author">
-                                        <label><b>Author:</b> {this.cap([user.firstName.trim(), user.lastName.trim()])}</label>
-                                        <label><b>Created:</b> {this.date(createdAt)}</label>
-                                        <label><b>Last Update:</b> {this.date(updatedAt)}</label>
+                                        <label><b>Author:</b> {this.cap(user.firstName.trim())} {this.cap(user.lastName.trim())}</label>
+                                        <label><b>Created:</b> {this.displayDate(createdAt)}</label>
+                                        <label><b>Last Update:</b> {this.displayDate(updatedAt)}</label>
                                     </div>
                                 </div>
                             </div>

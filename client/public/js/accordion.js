@@ -1,5 +1,5 @@
-
-/* var acc = document.getElementsByClassName("accordion");
+/* 
+var acc = window.document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
@@ -15,17 +15,17 @@ for (i = 0; i < acc.length; i++) {
     });
 } */
 
-const accordions = document.querySelectorAll('.accordion');
+let accordions = document.querySelectorAll('.accordion');
 
-accordions.forEach(accordion => {
+accordions.forEach(function(accordion) {
     accordion.addEventListener('click', function(){
         alert('hah');
-        /* this.classList.toggle('active');
+        this.classList.toggle('active');
         const panel = this.nextElementSibling;
         if (panel.style.maxHeight) {
             panel.style.maxHeight = null;
         } else {
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-        } */
+            panel.style.maxHeight = panel.style.scrollHeight + 'px';
+        }
     });
 });

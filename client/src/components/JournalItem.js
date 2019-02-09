@@ -1,34 +1,41 @@
 import React from 'react';
-import moment from 'moment';
 import { Consumer } from '../AppContext';
+import Utils from '../custom_modules/Utils';
 
 class JournalItem extends React.Component {
-    
-    cap = (str) => `${str.substr(0,1).toUpperCase()}${str.substr(1)}`;
-
-    formatDate = (date, format) => moment(date).format(format);
+    accClicked = (e) => {
+        const btn = e.target;
+        btn.classList.toggle('active');
+        const panel = btn.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+    }
 
     render() {
         const { title, body, user, createdAt, updatedAt } = this.props.journal;
+        const { cap, displayDate } = Utils;
         return (
-                <Consumer>
-                    {value => {
-                        // const { removeJournal, canCommentJournal } = value;
-                        return (<li className="list-item">
-                            <button className="accordion"><b>{this.cap(title)}</b></button>
-                            <div className="panel">
-                                <p className="body">{body}</p>
-                                <div className="detail">
-                                    <div className="author">
-                                        <label><b>Author:</b> {this.cap(user.firstName.trim())} {this.cap(user.lastName.trim())}</label>
-                                        <label><b>Created:</b> {this.displayDate(createdAt)}</label>
-                                        <label><b>Last Update:</b> {this.displayDate(updatedAt)}</label>
-                                    </div>
+            <Consumer>
+                {value => {
+                    // const { removeJournal, canCommentJournal } = value;
+                    return (<li className="list-item">
+                        <button onClick={this.accClicked} className="accordion"><b>{cap(title)}</b></button>
+                        <div className="panel">
+                            <p className="journal-body">{body}</p>
+                            <div className="journal-detail">
+                                <div className="journal-author">
+                                    <label className="detail"><b>Author:</b> {cap([user.firstName.trim(),user.lastName.trim()])}</label>
+                                    <label className="detail"><b>Created:</b> {displayDate(createdAt)}</label>
+                                    <label className="detail"><b>Last Update:</b> {displayDate(updatedAt)}</label>
                                 </div>
                             </div>
-                        </li>)
-                    }}
-                </Consumer>
+                        </div>
+                    </li>)
+                }}
+            </Consumer>
         );
     }
 }

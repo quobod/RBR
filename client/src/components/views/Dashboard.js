@@ -6,6 +6,10 @@ class Dashboard extends React.Component {
         this.state = {};
     }
 
+    componentDidMount() {
+        document.title = 'Dashboard';
+    }
+
     render() {
         return (
             <div className="content">

@@ -4,6 +4,11 @@ import { Consumer } from '../../AppContext';
 import JournalItem from '../JournalItem';
 
 class Journals extends React.Component {
+
+    componentDidMount() {
+        document.title = 'Journals';
+    }
+
     render() {
         return (
             <div className="content">

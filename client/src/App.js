@@ -16,12 +16,6 @@ import Spinner from './components/Spinner';
 import './App.css';
 
 class App extends Component {
-  componentDidMount() {
-      const script = window.document.createElement('script');
-      script.src = '/js/accordion.js';
-      window.document.body.appendChild(script);  
-  }
-  
   render() {
     return (
       <Provider>

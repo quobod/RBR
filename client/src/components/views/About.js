@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const About = () => {
+export default class About extends Component {
+
+    componentDidMount() {
+        document.title = 'About';
+    }
+
+  render() {
     return (
         <div className="content">
-            <h1><b>About <i>Rick JW</i> App</b></h1>
-            <p>This is version 1.0.0</p>
+            <h3>A React App For Reference</h3>
+            <p>Version: 1.0.0</p>
         </div>
-    );
-};
-
-export default About;
+    )
+  }
+}

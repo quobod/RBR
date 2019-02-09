@@ -9,7 +9,7 @@ const rjwt = require('restify-jwt-community');
 const { log, table } = require('./custom_modules/log');
 const { cfc } = require('./custom_modules/cfc');
 const { fyi, warning, error, success, failed, info } = require('./custom_modules/messagelevel');
-const { PORT, MONGODB_URI, SERVER_ADDRESS, SERVER_NAME, JWT_SECRET } = require('./config/index');
+const { PORT, MONGODB_URI, SERVER_ADDRESS, SERVER_NAME } = require('./config/index');
 
 // Configure passport
 require('./config/passport')(passport);

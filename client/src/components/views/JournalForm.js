@@ -14,6 +14,10 @@ class JournalForm extends React.Component {
         };
     }
 
+    componentDidMount() {
+        document.title = 'Add Journal';
+    }
+
     handleChange = (e) => {
         const { name, value } = e.target;
         this.setState({

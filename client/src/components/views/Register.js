@@ -15,6 +15,10 @@ class Register extends React.Component {
         };
     }
 
+    componentDidMount() {
+        document.title = 'Sign Up';
+    }
+
     handleChange = (e) => {
         const { name, value } = e.target
         this.setState({

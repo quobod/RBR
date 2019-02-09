@@ -11,6 +11,10 @@ class Signin extends React.Component {
         };
     }
 
+    componentDidMount() {
+        document.title = 'Sign In';
+    }
+
     handleChange = (e) => {
         const { name, value } = e.target;
         this.setState({

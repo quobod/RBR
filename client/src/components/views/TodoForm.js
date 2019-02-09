@@ -12,6 +12,10 @@ class TodoForm extends React.Component {
         };
     }
 
+    componentDidMount() {
+        document.title = 'Add Todo';
+    }
+
     handleChange = (e) => {
         const { name, value } = e.target;
         this.setState({

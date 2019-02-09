@@ -4,6 +4,11 @@ import { Consumer } from '../../AppContext';
 import TodoItem from '../TodoItem';
 
 class Todos extends React.Component {
+
+    componentDidMount() {
+        document.title = 'Todos';
+    }
+
     render() {
         return (
             <div className="content">

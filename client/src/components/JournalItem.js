@@ -27,9 +27,9 @@ class JournalItem extends React.Component {
                             <p className="journal-body">{body}</p>
                             <div className="journal-detail">
                                 <div className="journal-author">
-                                    <label className="detail"><b>Author:</b> {cap([user.firstName.trim(),user.lastName.trim()])}</label>
-                                    <label className="detail"><b>Created:</b> {displayDate(createdAt)}</label>
-                                    <label className="detail"><b>Last Update:</b> {displayDate(updatedAt)}</label>
+                                    <label className="detail">Author: {cap([user.firstName.trim(),user.lastName.trim()])}</label>
+                                    <label className="detail">Created: {displayDate(createdAt)}</label>
+                                    <label className="detail">Last Update: {displayDate(updatedAt)}</label>
                                 </div>
                             </div>
                         </div>

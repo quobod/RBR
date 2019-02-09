@@ -190,12 +190,20 @@
 .panel .detail * {
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.panel .journal-detail .journal-author {
   display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: start;
   justify-items: start;
 }
 
-.panel .detail .author {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  justify-items: start;
+.panel .journal-detail .journal-author .detail {
+  font-size: 0.8rem;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
 }

@@ -184,7 +184,7 @@
 
 .panel .journal-body {
   grid-area: journal-body;
-  margin: 0;
+  margin: 1.4rem 0;
   padding: 0;
   text-align: left;
 }

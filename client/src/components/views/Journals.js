@@ -12,7 +12,7 @@ class Journals extends React.Component {
     render() {
         return (
             <div className="content">
-                <ul>
+                <ul className="sub-menu">
                     <Link to="/addjournal" className="link">Add</Link>
                 </ul>
                 <Consumer>
@@ -23,7 +23,7 @@ class Journals extends React.Component {
                         } else {
                             return (
                                 <div className="journal-list-parent">
-                                    <ul className="journal-list">
+                                    <ul className="journal-list v-scroll">
                                         {journals.map(journal => {
                                             return <JournalItem key={journal._id} journal={journal} />
                                         })}

@@ -15,7 +15,7 @@ class JournalItem extends React.Component {
     }
 
     render() {
-        const { title, body, user, createdAt, updatedAt } = this.props.journal;
+        const { title, body, user, createdAt, updatedAt, isPublic } = this.props.journal;
         const { cap, displayDate } = Utils;
         return (
             <Consumer>
@@ -30,6 +30,7 @@ class JournalItem extends React.Component {
                                     <label className="detail">Author: {cap([user.firstName.trim(),user.lastName.trim()])}</label>
                                     <label className="detail">Created: {displayDate(createdAt)}</label>
                                     <label className="detail">Last Update: {displayDate(updatedAt)}</label>
+                                    <label className="detail">Published: {isPublic?'Yes':'No'}</label>
                                 </div>
                             </div>
                         </div>

@@ -175,19 +175,27 @@
 
 .panel {
   display: grid;
+  grid-row-gap: 0.4rem;
+  justify-content: start;
+  grid-template-areas: 
+  '. journal-body journal-body journal-body'
+  'journal-detail journal-detail journal-detail .';
 }
 
-.panel .body {
+.panel .journal-body {
+  grid-area: journal-body;
   margin: 0;
   padding: 0;
+  text-align: left;
 }
 
-.panel .detail {
+.panel .journal-detail {
+  grid-area: journal-detail;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
 }
 
-.panel .detail * {
+.panel .journal-detail * {
   margin: 0;
   padding: 0;
   display: flex;
@@ -206,4 +214,10 @@
   font-weight: 900;
   margin: 0;
   padding: 0;
+}
+
+.mission-parent {
+  font-family: cursive, 'Times New Roman', Times, serif;
+  font-weight: normal;
+  font-size: 1.1rem;
 }

@@ -110,6 +110,8 @@ ul li,
 .sub-menu {
   position: fixed;
   margin: 0;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
   padding: 0.7rem;
   width: 90%;
   background-color: rgba(0,0,0,0.7);

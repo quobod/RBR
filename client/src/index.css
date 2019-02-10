@@ -36,7 +36,7 @@ code {
   margin: 3rem 5vw 0 5vw;
   width: 90%;
   height: 89vh;
-  border: solid 1pt rgb(30,100,30);
+  /* border: solid 1pt rgb(30,100,30); */
   border-radius: 0.5rem;
   text-align: center;
   overflow: scroll; 
@@ -44,14 +44,14 @@ code {
 
 .content .journal-list-parent {
   /* border: solid 2pt rgb(20,20,93); */
-  margin: 1.9rem 0 0 0;
+  margin: 3rem 0 0 0;
   padding: 0;
 }
 
 .content .journal-list-parent .journal-list {
-  margin: 0;
+  margin: 0.7rem auto;
   padding: 0;
-  max-height: 81vh;
+  max-height: 79vh;
 }
 
 ul,
@@ -109,4 +109,18 @@ ul li,
 
 .sub-menu {
   position: fixed;
+  margin: 0;
+  padding: 0.7rem;
+  width: 90%;
+  background-color: rgba(0,0,0,0.7);
+  color: #fff;
+  text-align: center;
+}
+
+.sub-menu a {
+  color: #fff;
+}
+
+.sub-menu a:hover {
+  color:#9090ff;
 }

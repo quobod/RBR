@@ -175,6 +175,8 @@
 
 .panel {
   display: grid;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
   grid-row-gap: 0.4rem;
   justify-content: start;
   grid-template-areas: 
@@ -184,7 +186,7 @@
 
 .panel .journal-body {
   grid-area: journal-body;
-  margin: 1.4rem 0;
+  margin: 0;
   padding: 0;
   text-align: left;
 }

@@ -1,3 +1,7 @@
+.container {
+  display: grid;
+}
+
 .nav-bar {
   position: fixed;
   top: 0;
@@ -59,6 +63,11 @@
   padding: 0 0 0 0.2rem;
 }
 
+.register-form input:first-child,
+.signin-form input:first-child {
+  margin: 1.3rem 0 0 0;
+}
+
 .register-form input[type="submit"],
 .signin-form input[type="submit"],
 .add-todo-form input[type="submit"],
@@ -70,6 +79,7 @@
   font-weight: bolder;
   font-size: 1.1rem;
   padding: 0 0.5rem 0 0.5rem;
+  margin: 1rem 0 1rem 0;
 }
 
 .register-form input[type="submit"]:hover,
@@ -220,6 +230,6 @@
 
 .mission-parent {
   font-family: cursive, 'Times New Roman', Times, serif;
-  font-weight: normal;
-  font-size: 1.1rem;
+  font-weight: 888;
+  font-size: 1.6rem;
 }

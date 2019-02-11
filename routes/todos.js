@@ -66,4 +66,17 @@ module.exports = server => {
 			res.send({ status: 'failure', reason: err.message });
 		}
 	});
+	
+	server.get('/api/todos/complete/:id', async (req, res) => {
+		try {
+			const todo = await Todos.findOne({ _id: req.params.id });
+			if (todo) {
+				res.send({ status: 'success', payload: JSON.stringify(todo.completed) });
+			} else {
+				res.send({ status: 'failure', reason: 'Could not find todo' });
+			}
+		} catch (err) {
+			res.send({ status: 'failure', reason: err.message });
+		}
+	});
 }

@@ -18,14 +18,17 @@
   line-height: 1.5;
 }
 
-.nav-bar ul {
+.nav-bar ul:first-child {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .nav-bar a {
   text-decoration: none;
   color: rgba(255, 255, 250, 0.8);
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: 'Courier New', Courier, monospace, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .nav-bar a:hover,

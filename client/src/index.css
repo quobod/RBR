@@ -46,7 +46,8 @@ code {
   margin: 8rem 0;
 }
 
-.content .journal-list-parent {
+.content .journal-list-parent,
+.content .todo-list-parent {
   /* border: solid 2pt rgb(20,20,93); */
   margin: 3rem 0 0 0;
   padding: 0;

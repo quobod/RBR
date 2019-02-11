@@ -35,9 +35,9 @@ class Header extends React.Component {
                     {value => {
                         const { logout, token } = value;                       
                         return (
-                            <ul>
+                            <div>
                                 {token ? this.loggedIn(logout) : this.loggedOut()}
-                            </ul>
+                            </div>
                        )
                     }}                      
                 </Consumer>

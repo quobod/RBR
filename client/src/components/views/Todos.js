@@ -19,7 +19,7 @@ class Todos extends React.Component {
                     {value => {
                         const { todos } = value;
                         if (undefined === todos || todos.length < 1) {
-                            return (<h2 className="no-journals">No Todos</h2>)
+                            return (<h2 className="no-todos">No Todos</h2>)
                         } else {
                             return (
                                 <div className="todo-list-parent">

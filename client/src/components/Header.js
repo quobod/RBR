@@ -7,12 +7,18 @@ class Header extends React.Component {
     loggedIn = (logout) => {
         return (
             <ul>
-                <Link to="/todos" className="link">Todos&nbsp;</Link>
-                <Link to="/journals" className="link">Journals&nbsp;</Link>  
-                <Link to="/dashboard" className="link">Dashboard&nbsp;</Link> 
-                <button onClick={logout} className="auth-button">
-                    Signout
-                </button>
+                <li>
+                    <ul>
+                        <Link to="/todos" className="link">Todos&nbsp;</Link>
+                        <Link to="/journals" className="link">Journals&nbsp;</Link>  
+                        <Link to="/dashboard" className="link">Dashboard&nbsp;</Link> 
+                    </ul>
+                </li>
+                <li>
+                    <button onClick={logout} className="auth-button">
+                        Signout
+                    </button>
+                </li>
             </ul>
         );
     }
@@ -20,10 +26,18 @@ class Header extends React.Component {
     loggedOut = () => {
         return (
             <ul>
-                <Link to="/" className="link">Home&nbsp;</Link> 
-                <Link to="/about" className="link">About&nbsp;</Link>
-                <Link to="/signin" className="link">Signin&nbsp;</Link>
-                <Link to="/register" className="link">Signup&nbsp;</Link>               
+                <li>
+                    <ul>
+                        <Link to="/" className="link">Home&nbsp;</Link> 
+                        <Link to="/about" className="link">About&nbsp;</Link>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <Link to="/signin" className="link">Signin&nbsp;</Link>                     
+                        <Link to="/register" className="link">Signup&nbsp;</Link>  
+                    </ul>   
+                </li>     
             </ul>
         );
     }
@@ -35,7 +49,7 @@ class Header extends React.Component {
                     {value => {
                         const { logout, token } = value;                       
                         return (
-                            <div>
+                            <div className="nav-bar">
                                 {token ? this.loggedIn(logout) : this.loggedOut()}
                             </div>
                        )

@@ -42,7 +42,8 @@ code {
   overflow: scroll; 
 }
 
-.no-journals {
+.no-journals,
+.no-todos {
   margin: 8rem 0;
 }
 

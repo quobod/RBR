@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React from 'react';
 import { Consumer } from '../AppContext';
 
@@ -5,12 +6,27 @@ class TodoItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            completed: props.todo.completed
+            completed: false
         }
     }
 
     completed = () => {
         return ({textDecoration: this.state.completed? 'line-through': 'none'});
+    }
+
+    completeStatus = (id) => {
+        Axios.get(`/api/todos/complete/${id}`)
+            .then(response => {
+                const { payload } = response.data;
+                this.setState({ completed: JSON.parse(payload) });
+            })
+            .catch(err => {
+                this.setState({ completed: false });
+            });
+    }
+
+    componentDidMount() {
+        this.completeStatus(this.props.todo._id);
     }
 
     render() {
@@ -23,12 +39,13 @@ class TodoItem extends React.Component {
                         <div className="todo-item">
                             <div className="todo-item-controls">
                                 <span className="todo-completed">
-                                    <input onChange={() => {
+                                    <input className="complete-todo" onChange={() => {
                                         completeTodo(_id);
+                                        
                                         this.setState((state, props) => ({
                                             completed: state.completed === false? true:false
                                         }));
-                                    }} type="checkbox" checked={this.state.completed} />&nbsp;
+                                    }} type="checkbox" checked={this.state.completed}/>&nbsp;
                                     <b className="bold">Completed?</b>
                                 </span>
                             {removeTodoFailure? <h1>Unable to delete {title}</h1> : <p style={this.completed()}><b>{title}</b></p>}

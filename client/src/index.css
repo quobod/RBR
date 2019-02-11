@@ -42,6 +42,10 @@ code {
   overflow: scroll; 
 }
 
+.no-journals {
+  margin: 8rem 0;
+}
+
 .content .journal-list-parent {
   /* border: solid 2pt rgb(20,20,93); */
   margin: 3rem 0 0 0;
@@ -121,6 +125,7 @@ ul li,
 
 .sub-menu a {
   color: #fff;
+  text-decoration: none;
 }
 
 .sub-menu a:hover {

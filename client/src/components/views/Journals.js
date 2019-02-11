@@ -19,7 +19,7 @@ class Journals extends React.Component {
                     {value => {
                         const { journals } = value;
                         if (undefined === journals || journals.length < 1) {
-                            return (<h2>No Journals</h2>)
+                            return (<h2 className="no-journals">No Journals</h2>)
                         } else {
                             return (
                                 <div className="journal-list-parent">

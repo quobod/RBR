@@ -49,6 +49,7 @@ module.exports = server => {
 		}
 	});
 
+	// Remove journal
 	server.get('/api/journals/remove/:id', async (req, res) => {
 		const { id } = req.params;
 		try {
@@ -63,4 +64,10 @@ module.exports = server => {
 			res.send({ status: 'failure', reason: err.message });
 		}
 	});
+
+	// Edit journal
+
+	// Comment journal
+
+	// Remove comment
 }

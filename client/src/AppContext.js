@@ -219,8 +219,16 @@ export class Provider extends Component {
         console.log(`\n\n\t\t\tCommenting Journal ID: ${id}\n\n`);
     }
 
-    editJournal = (id) => {
-        console.log(`\n\n\t\t\tCommenting Journal ID: ${id}\n\n`);
+    addJournalComment = (journalId, userId, commentData) => {
+
+    }
+
+    removeJournalComment = (journalId, commentId, userId) => {
+
+    }
+
+    editJournal = (journalId, data) => {
+        console.log(`\n\n\t\t\tCommenting Journal ID: ${journalId}\n\n`);
     }
 
     render() {

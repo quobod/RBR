@@ -49,9 +49,18 @@ module.exports = server => {
 		}
 	});
 
-	server.get('/api/journals/remove/:id', (req, res) => {
+	server.get('/api/journals/remove/:id', async (req, res) => {
 		const { id } = req.params;
-		log(`\n\n\t\tJournal ID: ${id}\n\n`);
-		res.send({ status: 'success', payload: { id } });
+		try {
+			await Journal.findByIdAndDelete(id, (err, journal) => {
+				if (err) {
+					res.send({ status: 'failure', reason: err.message });
+				}
+				res.status(201);
+				res.send({ status: 'success', payload: 'done' });
+			});
+		} catch(err) {
+			res.send({ status: 'failure', reason: err.message });
+		}
 	});
 }

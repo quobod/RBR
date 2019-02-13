@@ -10,7 +10,6 @@ export class Provider extends Component {
             journals: [],
             user: JSON.parse(localStorage.getItem("user")) || {},
             token: JSON.parse(localStorage.getItem("token")) || "",
-            loginSuccess: true,
             registrationSuccess: true,
             addTodoSuccess: true,
             removeTodoSuccess: true,
@@ -46,7 +45,6 @@ export class Provider extends Component {
                         this.setState({
                             user,
                             token,
-                            loginSuccess: true,
                             loginErrorMessage: ''
                         });
                         this.initTodos();
@@ -58,7 +56,6 @@ export class Provider extends Component {
                         this.setState({
                             user: {},
                             token: "",
-                            loginSuccess: false,
                             loginErrorMessage: 'Authentication Failed'
                         });
                     break;
@@ -70,7 +67,6 @@ export class Provider extends Component {
                 this.setState({
                     user: {},
                     token: "",
-                    loginSuccess: false,
                     loginErrorMessage: 'Authentication Failure'
                 })
             });
@@ -162,10 +158,6 @@ export class Provider extends Component {
             })
             .catch(err => {
                 console.log(`\n\t\t${err.message}\n`);
-                this.setState({
-                    addTodoSuccess: false,
-                    removeTodoErrorMessage: err.message
-                })
             });
     }
 
@@ -213,10 +205,21 @@ export class Provider extends Component {
     }
 
     removeJournal = (id) => {
-        console.log(`\n\n\t\t\tRemoving Journal ID: ${id}\n\n`);
+        Axios.get(`/api/journals/remove/${id}`)
+            .then(response => {
+                console.log(response.data);
+                this.initJournals();
+            })
+            .catch(err => {
+                console.log(`\n\t\t${err.message}\n`);
+            });
     }
 
     canCommentJournal = (id) => {
+        console.log(`\n\n\t\t\tCommenting Journal ID: ${id}\n\n`);
+    }
+
+    editJournal = (id) => {
         console.log(`\n\n\t\t\tCommenting Journal ID: ${id}\n\n`);
     }
 
@@ -229,8 +232,7 @@ export class Provider extends Component {
                     register: this.register,
                     addTodo: this.addTodo,
                     removeTodo: this.removeTodo,
-                    token: this.state.token,                    
-                    loginSuccess: this.state.loginSuccess,
+                    token: this.state.token,                
                     registrationSuccess: this.state.registrationSuccess,
                     addTodoSuccess: this.state.addTodoSuccess,
                     removeTodoSuccess: this.state.removeTodoSuccess,
@@ -244,6 +246,7 @@ export class Provider extends Component {
                     addJournalSuccess: this.state.addJournalSuccess,
                     removeJournal: this.removeJournal,
                     canCommentJournal: this.canCommentJournal,
+                    editJournal: this.editJournal,
                     completeTodo: this.completeTodo
                 }
             }>

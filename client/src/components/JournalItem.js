@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Consumer } from '../AppContext';
 import Utils from '../custom_modules/Utils';
 
@@ -15,12 +16,12 @@ class JournalItem extends React.Component {
     }
 
     render() {
-        const { title, body, user, createdAt, updatedAt, isPublic } = this.props.journal;
+        const { title, body, user, createdAt, updatedAt, isPublic, _id } = this.props.journal;
         const { cap, displayDate } = Utils;
         return (
             <Consumer>
                 {value => {
-                    // const { removeJournal, canCommentJournal } = value;
+                    const { removeJournal } = value;
                     return (<li className="list-item">
                         <button onClick={this.accClicked} className="accordion"><b>{cap(title)}</b></button>
                         <div className="panel">
@@ -31,6 +32,20 @@ class JournalItem extends React.Component {
                                     <label className="detail">Created: {displayDate(createdAt)}</label>
                                     <label className="detail">Last Update: {displayDate(updatedAt)}</label>
                                     <label className="detail">Published: {isPublic?'Yes':'No'}</label>
+                                </div>
+                                <div className="journal-controls">
+                                    <div>
+                                        <button onClick={()=>{
+                                            removeJournal(_id)
+                                        }} className="delete-journal">
+                                            <i className="fas fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <Link to="/editjournal" className="edit-journal">
+                                            <i className="fas fa-pencil-alt"></i>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>

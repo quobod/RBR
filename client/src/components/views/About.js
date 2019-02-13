@@ -11,7 +11,7 @@ export default class About extends Component {
         <div className="content">
             <h2 className="mission-parent">A React App For <i className="mission">Developer Reference</i></h2>
             <p>Version: 1.0.0</p>
-            <p><a href="https://github.com/quobod/RAR" target="_blank">Repo</a></p>
+            <p><a href="https://github.com/quobod/RAR" target="_blank" rel="noopener noreferrer">Repo</a></p>
         </div>
     )
   }

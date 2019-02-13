@@ -40,7 +40,7 @@ module.exports = server => {
 		try {
 			await Todos.findByIdAndDelete(todoId,(err, todo) => {
 				res.status(201);
-				res.send({ status: 'success', payload: JSON.stringify(todo) });
+				res.send({ status: 'success', payload: 'done' });
 			});
 		} catch(err) {
 			res.send({ status: 'failure', reason: err.message });

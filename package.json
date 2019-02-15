@@ -1,7 +1,7 @@
 {
-  "name": "rickjw",
+  "name": "restify_rjwusers",
   "version": "1.0.0",
-  "description": "A todos web application built with React",
+  "description": "A user management web application built with React",
   "main": "app.js",
   "scripts": {
     "start": "clear & nodemon app"
